@@ -8,7 +8,6 @@
 <style>
 html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
 * { border: 0; }
-iframe { width: 100%; height: 100%; }
 iframe.active { pointer-events: auto; }
 iframe.passthrough { pointer-events: none; }
 </style>
@@ -16,11 +15,53 @@ iframe.passthrough { pointer-events: none; }
 <body>
 
 <script>
+var LAYOUT = {
+  ONLY: 1,
+  TOP_BOTTOM: 2,
+  // LEFT_RIGHT: 3,
+  // LEFT_TOP_BOTTOM: 4,
+  // TOP_LEFT_RIGHT: 5,
+};
 var internets = [
-  { url: 'https://newspicks.com/', refresh_ms: 600000 },
-  { url: 'https://hckrnews.com/', refresh_ms: 300000 },
-  { url: 'http://digg.com/reader?i=1', refresh_ms: 300000 },
-  { url: 'http://www.inoreader.com/', refresh_ms: 300000 },
+  {
+    refresh_ms: 600000,
+    layout: LAYOUT.ONLY,
+    sources: [
+      'https://newspicks.com/'
+    ]
+  },
+  {
+    refresh_ms: 300000,
+    layout: LAYOUT.TOP_BOTTOM,
+    sources: [
+      'http://www.inoreader.com/',
+      'https://hckrnews.com/'
+    ]
+  },
+  {
+    refresh_ms: 300000,
+    layout: LAYOUT.TOP_BOTTOM,
+    sources: [
+      'http://jp.techcrunch.com/',
+      'http://thebridge.jp/'
+    ]
+  },
+  {
+    refresh_ms: 300000,
+    layout: LAYOUT.TOP_BOTTOM,
+    sources: [
+      'http://b.hatena.ne.jp/hotentry',
+      'http://blog.livedoor.jp/itsoku/'
+    ]
+  },
+  {
+    refresh_ms: 300000,
+    layout: LAYOUT.TOP_BOTTOM,
+    sources: [
+      'http://markezine.jp/',
+      'http://eczine.jp/'
+    ]
+  }
 ];
 
 var current;
@@ -30,7 +71,28 @@ if (pos === -1) {
 } else {
   current = parseInt(location.href.substring(pos + 1)) % internets.length;
 }
-document.write('<iframe id="iframe" class="passthrough" src="' + internets[current].url + '"></iframe>');
+switch (internets[current].layout) {
+  case LAYOUT.ONLY:
+    document.write(
+      '<iframe class="passthrough" src="' +
+        internets[current].sources[0] +
+      '" style="width:100%;height:100%;"></iframe>'
+    );
+    break;
+  case LAYOUT.TOP_BOTTOM:
+    document.write(
+      '<iframe class="passthrough" src="' +
+        internets[current].sources[0] +
+      '" style="width:100%;height:50%;"></iframe>'
+    );
+    document.write('<br/>');
+    document.write(
+      '<iframe class="passthrough" src="' +
+        internets[current].sources[1] +
+      '" style="width:100%;height:50%;"></iframe>'
+    );
+    break;
+}
 
 // if there is no mousemove event while refresh_ms, reload whole contents.
 var app = {};

@@ -1,6 +1,7 @@
 class App {
     constructor() {
         this.timeout = undefined;
+        this.intervalId = undefined;
         this.order = [
             {
                 refresh_ms: 600000,
@@ -23,29 +24,29 @@ class App {
     }
 
     getNextUrl(url) {
-        this.order[(this.getIndex(url) + 1) % this.order.length].url;
+        return this.order[(this.getIndex(url) + 1) % this.order.length].url;
     }
 
     resetTimeout() {
         let index = this.getIndex(location.href);
         if (index < 0) { index = 0; }
-        this.timeout = + new Date() + this.order[index].refresh_ms;
+        this.timeout = (new Date()).getTime() + this.order[index].refresh_ms;
     }
 
     goNext() {
         location.href = this.getNextUrl(location.href);
+        clearInterval(this.intervalId);
     }
 
     check() {
-        console.log("check");
         if (this.timeout === undefined) { this.resetTimeout(); }
-        if (this.timeout - new Date() < 0) { this.goNext(); }
+        if (this.timeout - (new Date()).getTime() < 0) { this.goNext(); }
     }
 
     run() {
         document.addEventListener('mouseover', () => { this.resetTimeout(); });
         document.addEventListener('mouseout', () => { this.resetTimeout(); });
-        setInterval(() => { this.check(); }, 500);
+        this.intervalId = setInterval(() => { this.check(); }, 500);
     }
 }
 

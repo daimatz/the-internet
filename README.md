@@ -1,9 +1,7 @@
 # The Internet
 
-## URL
-
-<http://s3-ap-northeast-1.amazonaws.com/daimatz-net-public/internet.html>
-
-## Deploy
-
-TODO
+```
+npm install nativefier
+$(npm bin)/nativefier --inject inject.js --name "The Internet" -p darwin -a x64 \
+    $(grep url: inject.js | awk -F"'" '{print $2}' | head -n 1)
+```

@@ -43,9 +43,26 @@ class App {
         if (this.timeout - (new Date()).getTime() < 0) { this.goNext(); }
     }
 
+    createNextButton() {
+        let div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.top = '0px';
+        div.style.right = '0px';
+        div.style.zIndex = '999999';
+        let button = document.createElement('button');
+        button.style.width = '40px';
+        button.style.height = '40px';
+        button.style.fontSize = '24px';
+        button.addEventListener('click', () => { this.goNext(); });
+        button.innerHTML = '&#8634;';
+        div.appendChild(button);
+        return div;
+    }
+
     run() {
         document.addEventListener('mouseover', () => { this.resetTimeout(); });
         document.addEventListener('mouseout', () => { this.resetTimeout(); });
+        document.body.appendChild(this.createNextButton());
         this.intervalId = setInterval(() => { this.check(); }, 500);
     }
 }

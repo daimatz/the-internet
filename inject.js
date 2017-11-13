@@ -53,6 +53,7 @@ class App {
         button.style.width = '40px';
         button.style.height = '40px';
         button.style.fontSize = '24px';
+        button.style.cursor = 'default';
         button.addEventListener('click', () => { this.goNext(); });
         button.innerHTML = '&#8634;';
         div.appendChild(button);

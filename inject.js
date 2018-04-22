@@ -8,6 +8,9 @@ class App {
                 url: 'https://newspicks.com/'
             }, {
                 refresh_ms: 300000,
+                url: 'https://newspicks.com/series/'
+            }, {
+                refresh_ms: 300000,
                 url: 'https://www.inoreader.com/'
             }, {
                 refresh_ms: 300000,

@@ -20,7 +20,7 @@ class App {
     }
 
     getIndex(url) {
-        for (let i = 0; i < this.order.length; i++) {
+        for (let i = this.order.length - 1; i >= 0; i--) {
             if (url.indexOf(this.order[i].url) != -1) { return i; }
         }
         return -1;

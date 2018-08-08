@@ -4,8 +4,11 @@ class App {
         this.intervalId = undefined;
         this.order = [
             {
-                refresh_ms: 600000,
+                refresh_ms: 300000,
                 url: 'https://newspicks.com/'
+            }, {
+                refresh_ms: 300000,
+                url: 'https://business.nikkeibp.co.jp/'
             }, {
                 refresh_ms: 300000,
                 url: 'https://newspicks.com/series/'

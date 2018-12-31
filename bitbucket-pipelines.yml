@@ -14,4 +14,4 @@ pipelines:
           - npm install
           - npm run build
           - python -c "import shutil;shutil.make_archive('The Internet-darwin-x64','zip',root_dir='.', base_dir='The Internet-darwin-x64')"
-          - curl -X POST -user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"The Internet-darwin-x64.zip"
+          - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"The Internet-darwin-x64.zip"

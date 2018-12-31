@@ -11,6 +11,7 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
+          - apt-get install zip
           - npm install
           - npm run build
           - zip -r 'The Internet.zip' 'The Internet'

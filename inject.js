@@ -8,9 +8,6 @@ class App {
                 url: 'https://newspicks.com/'
             }, {
                 refresh_ms: 300000,
-                url: 'https://business.nikkeibp.co.jp/'
-            }, {
-                refresh_ms: 300000,
                 url: 'https://newspicks.com/series/'
             }, {
                 refresh_ms: 300000,

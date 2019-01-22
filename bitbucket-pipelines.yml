@@ -8,11 +8,12 @@ image: node:10.15.0
 pipelines:
   default:
     - step:
-        caches:
-          - node
         script: # Modify the commands below to build your repository.
           - apt-get update && apt-get install build-essential
-          - npm install
-          - npm run build
+          - curl -L git.io/nodebrew | perl - setup
+          - $HOME/.nodebrew/current/bin/nodebrew install latest
+          - $HOME/.nodebrew/current/bin/nodebrew use latest
+          - $HOME/.nodebrew/current/bin/npm install
+          - $HOME/.nodebrew/current/bin/npm run build
           - python -c "import shutil;shutil.make_archive('The Internet-darwin-x64','zip',root_dir='.', base_dir='The Internet-darwin-x64')"
           - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"The Internet-darwin-x64.zip"

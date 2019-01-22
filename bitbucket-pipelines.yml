@@ -3,7 +3,7 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:6.9.4
+image: node:10.15.0
 
 pipelines:
   default:
@@ -11,6 +11,7 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
+          - apt-get update && apt-get install build-essential
           - npm install
           - npm run build
           - python -c "import shutil;shutil.make_archive('The Internet-darwin-x64','zip',root_dir='.', base_dir='The Internet-darwin-x64')"

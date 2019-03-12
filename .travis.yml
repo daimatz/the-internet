@@ -1,0 +1,9 @@
+os: osx
+language: node_js
+node_js:
+  - "7"
+before_script:
+  - npm install
+script:
+  - npm run build
+  - python -c "import shutil;shutil.make_archive('The Internet-darwin-x64','zip',root_dir='.', base_dir='The Internet-darwin-x64')"

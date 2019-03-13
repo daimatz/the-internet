@@ -7,22 +7,23 @@ before_script:
 script:
 - npm run build
 before_deploy:
-  - zip -r TheInternet-darwin-x64-$(date +%Y%m%d%H%M%S).zip TheInternet-darwin-x64
+  - zip -r TheInternet-darwin-x64-$(date +%Y%m%d).zip TheInternet-darwin-x64
   # decrypt ssh key
   - mkdir -p $HOME/.ssh
   - chmod 700 $HOME/.ssh
   - openssl aes-256-cbc -K $encrypted_86e4aaa31ca5_key -iv $encrypted_86e4aaa31ca5_iv -in id_rsa_travis.enc -out $HOME/.ssh/id_rsa -d
   - chmod 600 $HOME/.ssh/id_rsa
   # tag
+  - export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
   - git config --global user.name "Travis CI"
   - git config --global user.email "travis@travis-ci.org"
   - git clone git@github.com:daimatz/the-internet
   - cd the-internet
-  - git tag release-$(date +%Y%m%d%H%M)
-  - git push origin release-$(date +%Y%m%d%H%M)
+  - git tag release-$(date +%Y%m%d)
+  - git push origin release-$(date +%Y%m%d)
 deploy:
   provider: releases
   api_key:
     secure: BCag1WF1o/1hwM07Dgrio+2kx1430Fa0VEEzEM5qy+2EE6gxVb7cPfL4EQIefp7Lf393CcQYZEGikUplXgXIrSO9TX87viNayGQfsZExVefcxXzVvLtYqcRlvMbn9Tx1goYYamaKxASzaYSvTLP4WfNFUM0nGPkqfEC/NWoztXrwOoBrmDoEJuEs+rpdSFuz0lxfDpBANuHhp1a1/WCVnmBNo+D9JvbYZB9BSj0VNloIrOYm//2S1DKOA3w2BDUvIAJuSbAG6wKrlf00Q6rbZ8TYxNAYrevBAUWwa8S5f8jOe4jn2+mgc63v6PD2bn0koxDKsledpxYE7+QRpqGXwNMR2zQv7j7cFGkemSDBrgnCweHhfZw4fDFE+MUjK9aIDEJZ+STeaWvwIOqKf5tjJ/hrZB3nP+p6lHVj8YIHsg19mDjmHKnjmK2IZhczs0YCocPyq+u65+iMLlTGHLf18RUgOxwEr8oRUOorEgzTHjI9BLoO9wNfqvop1O1kfYlKjOCwkGGwVbqChQtw4eWaXkG+3kBKbCMZ0AhLBK68bY/PcRh7eBbpy1oasaxUcu95QIKVZlwQ8/9hvZuuTkPrG96WpxwZmxGSHqUpe+lVDltitMoFtemApTXKBxN2LpTDdGFRT8S752mTKMkmalUhRVfmGKfpKLh7XW6iqaNJWfA=
-  file: TheInternet-darwin-x64-$(date +%Y%m%d%H%M%S).zip
+  file: TheInternet-darwin-x64-$(date +%Y%m%d).zip
   skip_cleanup: true

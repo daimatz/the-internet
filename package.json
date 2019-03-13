@@ -1,10 +1,10 @@
 {
   "name": "the-internet",
   "version": "1.0.0",
-  "description": "The Internet",
+  "description": "TheInternet",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "nativefier --internal-urls \"'($(grep url: inject.js | awk -F\"'\" '{printf $2\"|\"}'))'\" --inject inject.js --name \"The Internet\" -p darwin -a x64 $(grep url: inject.js | awk -F\"'\" '{print $2}' | head -n 1)"
+    "build": "nativefier --internal-urls \"'($(grep url: inject.js | awk -F\"'\" '{printf $2\"|\"}'))'\" --inject inject.js --name \"TheInternet\" -p darwin -a x64 $(grep url: inject.js | awk -F\"'\" '{print $2}' | head -n 1)"
   },
   "repository": {
     "type": "git",

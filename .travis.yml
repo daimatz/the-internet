@@ -21,6 +21,7 @@ before_deploy:
   - cd the-internet
   - git tag release-$(date +%Y%m%d)
   - git push origin release-$(date +%Y%m%d)
+  - cd ..
 deploy:
   provider: releases
   api_key:

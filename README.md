@@ -1,5 +1,7 @@
 # The Internet
 
+[![Build Status](https://travis-ci.org/daimatz/the-internet.svg?branch=master)](https://travis-ci.org/daimatz/the-internet)
+
 ```
 npm install nativefier@7.5.4
 $(npm bin)/nativefier \

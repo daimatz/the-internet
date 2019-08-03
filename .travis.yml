@@ -3,6 +3,7 @@ language: node_js
 node_js:
 - '7'
 before_script:
+- apt install wine
 - npm install
 script:
 - npm run build

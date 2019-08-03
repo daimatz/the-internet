@@ -33,7 +33,7 @@ deploy:
   file:
     - TheInternet-darwin-x64-$VERSION.zip
     - TheInternet-win32-x64-$VERSION.zip
-    - TheInternet-linux-x64-$VERSION.zip
+    - the-internet-linux-x64-$VERSION.zip
   skip_cleanup: true
   on:
     tags: false

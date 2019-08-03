@@ -4,7 +4,8 @@
   "description": "TheInternet",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "nativefier --internal-urls \"'($(grep url: inject.js | awk -F\"'\" '{printf $2\"|\"}'))'\" --inject inject.js --name \"TheInternet\" -p darwin -a x64 $(grep url: inject.js | awk -F\"'\" '{print $2}' | head -n 1)"
+    "build":
+      "nativefier --internal-urls \"'($(grep url: inject.js | awk -F\"'\" '{printf $2\"|\"}'))'\" --inject inject.js --name \"TheInternet\" -p darwin -a x64 $(grep url: inject.js | awk -F\"'\" '{print $2}' | head -n 1) && nativefier --internal-urls \"'($(grep url: inject.js | awk -F\"'\" '{printf $2\"|\"}'))'\" --inject inject.js --name \"TheInternet\" -p win32 -a x64 $(grep url: inject.js | awk -F\"'\" '{print $2}' | head -n 1) && nativefier --internal-urls \"'($(grep url: inject.js | awk -F\"'\" '{printf $2\"|\"}'))'\" --inject inject.js --name \"TheInternet\" -p linux -a x64 $(grep url: inject.js | awk -F\"'\" '{print $2}' | head -n 1)"
   },
   "repository": {
     "type": "git",

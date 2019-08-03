@@ -8,6 +8,8 @@ script:
 - npm run build
 before_deploy:
   - zip -r TheInternet-darwin-x64-$VERSION.zip TheInternet-darwin-x64
+  - zip -r TheInternet-win32-x64-$VERSION.zip TheInternet-win32-x64
+  - zip -r the-internet-linux-x64-$VERSION.zip TheInternet-linux-x64
   # decrypt ssh key
   - mkdir -p $HOME/.ssh
   - chmod 700 $HOME/.ssh
@@ -26,7 +28,10 @@ deploy:
   provider: releases
   api_key:
     secure: BCag1WF1o/1hwM07Dgrio+2kx1430Fa0VEEzEM5qy+2EE6gxVb7cPfL4EQIefp7Lf393CcQYZEGikUplXgXIrSO9TX87viNayGQfsZExVefcxXzVvLtYqcRlvMbn9Tx1goYYamaKxASzaYSvTLP4WfNFUM0nGPkqfEC/NWoztXrwOoBrmDoEJuEs+rpdSFuz0lxfDpBANuHhp1a1/WCVnmBNo+D9JvbYZB9BSj0VNloIrOYm//2S1DKOA3w2BDUvIAJuSbAG6wKrlf00Q6rbZ8TYxNAYrevBAUWwa8S5f8jOe4jn2+mgc63v6PD2bn0koxDKsledpxYE7+QRpqGXwNMR2zQv7j7cFGkemSDBrgnCweHhfZw4fDFE+MUjK9aIDEJZ+STeaWvwIOqKf5tjJ/hrZB3nP+p6lHVj8YIHsg19mDjmHKnjmK2IZhczs0YCocPyq+u65+iMLlTGHLf18RUgOxwEr8oRUOorEgzTHjI9BLoO9wNfqvop1O1kfYlKjOCwkGGwVbqChQtw4eWaXkG+3kBKbCMZ0AhLBK68bY/PcRh7eBbpy1oasaxUcu95QIKVZlwQ8/9hvZuuTkPrG96WpxwZmxGSHqUpe+lVDltitMoFtemApTXKBxN2LpTDdGFRT8S752mTKMkmalUhRVfmGKfpKLh7XW6iqaNJWfA=
-  file: TheInternet-darwin-x64-$VERSION.zip
+  file:
+    - TheInternet-darwin-x64-$VERSION.zip
+    - TheInternet-win32-x64-$VERSION.zip
+    - TheInternet-linux-x64-$VERSION.zip
   skip_cleanup: true
   on:
     tags: false

@@ -11,7 +11,7 @@ script:
 before_deploy:
   - zip -r TheInternet-darwin-x64-$VERSION.zip TheInternet-darwin-x64
   - zip -r TheInternet-win32-x64-$VERSION.zip TheInternet-win32-x64
-  - zip -r the-internet-linux-x64-$VERSION.zip TheInternet-linux-x64
+  - zip -r the-internet-linux-x64-$VERSION.zip the-internet-linux-x64
   # decrypt ssh key
   - mkdir -p $HOME/.ssh
   - chmod 700 $HOME/.ssh

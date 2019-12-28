@@ -3,8 +3,8 @@ language: node_js
 node_js:
 - '7'
 before_script:
-- brew update
-- brew install wine
+# - brew update
+# - brew install wine
 - npm install
 script:
 - npm run build

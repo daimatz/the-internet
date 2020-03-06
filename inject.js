@@ -11,7 +11,7 @@ class App {
                 url: 'https://newspicks.com/series/'
             }, {
                 refresh_ms: 300000,
-                url: 'https://www.stockclip.net/'
+                url: 'https://strainer.jp/'
             }, {
                 refresh_ms: 300000,
                 url: 'https://www.inoreader.com/'

@@ -5,6 +5,9 @@ class App {
         this.order = [
             {
                 refresh_ms: 300000,
+                url: 'https://paper.dropbox.com/doc/Private-Project-Progress--A39iDhdh44mUgrQ5eTob6qaxAg-UaOHiL3ThNmq55FaUyPFK'
+            }, {
+                refresh_ms: 300000,
                 url: 'https://newspicks.com/'
             }, {
                 refresh_ms: 300000,

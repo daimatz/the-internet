@@ -27,7 +27,7 @@ class App {
 
     getIndex(url) {
         for (let i = this.order.length - 1; i >= 0; i--) {
-            if (url.indexOf(this.order[i].url) != -1) { return i; }
+            if (url.substr(0, 40).indexOf(this.order[i].url.substr(0, 40)) != -1) { return i; }
         }
         return -1;
     }

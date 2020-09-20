@@ -14,6 +14,12 @@ class App {
                 url: 'https://newspicks.com/series/'
             }, {
                 refresh_ms: 300000,
+                url: 'https://jp.techcrunch.com/'
+            }, {
+                refresh_ms: 300000,
+                url: 'https://www.producthunt.com/'
+            }, {
+                refresh_ms: 300000,
                 url: 'https://strainer.jp/'
             }, {
                 refresh_ms: 300000,

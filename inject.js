@@ -65,6 +65,10 @@ class App {
         div.style.right = '0px';
         div.style.zIndex = '999999';
         let button = document.createElement('button');
+        button.style.padding = '0';
+        button.style.backgroundColor = '#eeeeee';
+        button.style.border = '1px solid #cccccc';
+        button.style.color = '#000000';
         button.style.width = '40px';
         button.style.height = '40px';
         button.style.fontSize = '24px';

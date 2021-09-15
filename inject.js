@@ -14,6 +14,9 @@ class App {
                 url: 'https://jp.techcrunch.com/'
             }, {
                 refresh_ms: 300000,
+                url: 'https://media.startup-db.com/'
+            }, {
+                refresh_ms: 300000,
                 url: 'https://strainer.jp/'
             }, {
                 refresh_ms: 300000,
